@@ -78,8 +78,8 @@ public class MainActivity extends BaseActivity implements LocationListener, View
     private ArrayList<String> mTitleList;
     private boolean mLocationPermissionGranted;
     private boolean mLocationGranted;
-    //private final LatLng mDefaultLocation = new LatLng(24.2131498, 120.7065008);
-    private final LatLng mDefaultLocation = new LatLng(24.1817706, 120.6148122);
+    private final LatLng mDefaultLocation = new LatLng(24.2131498, 120.7065008);
+    //private final LatLng mDefaultLocation = new LatLng(24.1817706, 120.6148122);
     private double Distance;
 
     //控件成员
