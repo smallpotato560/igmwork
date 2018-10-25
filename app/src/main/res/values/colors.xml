@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- colorPrimary 应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色-->
+    <color name="colorPrimary">#14aef4</color>
+    <!--colorPrimaryDark 应用的主要暗色调，statusBarColor默认使用该颜色-->
+    <color name="colorPrimaryDark">#14aef4</color>
+    <!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
+    <color name="colorAccent">#14aef4</color>
+
+    <color name="colorWarnArea">#ff4081</color>
+    <!--textColorPrimary 应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
+    <color name="textColorPrimary">#ffffff</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="colorLoadingBar">#fb635d</color>
+
+    <!--colorButtonNormal 默认按钮的背景颜色-->
+    <color name="colorButtonNormal">#14aef4</color>
+    <color name="colorButtonDisabled">#848889</color>
+    <color name="colorButtonGrayCircle">#f7f8fc</color>
+    <color name="colorButtonGrayCircleBorder">#f1f1f1</color>
+    <color name="colorButtonGrayCircleTint">#3d7ba2</color>
+
+    <!--statusBarColor 状态栏颜色，默认使用colorPrimaryDark-->
+
+    <!--windowBackground 窗口背景颜色-->
+    <color name="windowBackground">#ffffff</color>
+
+    <!--navigationBarColor 底部栏颜色-->
+
+    <!--colorForeground 应用的前景色，ListView的分割线，switch滑动区默认使用该颜色-->
+
+    <!--colorBackground 应用的背景色，popMenu的背景默认使用该颜色-->
+
+    <!-- colorControlNormal CheckBox，RadioButton，SwitchCompat等默认状态的颜色。-->
+    <color name="colorControlNormal">#6914aef4</color>
+    <!--colorControlHighlight 控件按压时的色调-->
+
+    <!-- colorControlActivated 控件选中时的颜色，默认使用colorAccent-->
+
+    <!-- editTextColor：默认EditView输入框字体的颜色。-->
+
+    <!-- textColor Button，textView的文字颜色-->
+    <color name="textColor">#549fe3</color>
+    <color name="textColorDark">#5c5c5d</color>
+
+    <!--textColorPrimaryDisableOnly RadioButton checkbox等控件的文字-->
+
+    <!--colorSwitchThumbNormal: switch thumbs 默认状态的颜色. (switch off)-->
+
+    <!--自定义颜色-->
+    <color name="button_picture_browser_bg">#00000000</color>
+    <color name="button_picture_browser_bg_press">#282828</color>
+    <color name="button_picture_browser_item_bg">@android:color/transparent</color>
+    <color name="button_picture_browser_press">#07bde8</color>
+
+    <color name="select_list_item_press">#82c3ff</color>
+
+    <color name="White">#ffffff</color>
+    <color name="textTitleColor">#f5f5f5</color>
+    <color name="textSummaryColor">#f5f5f5</color>
+    <color name="typeBarBGColor">#fafafa</color>
+    <color name="chatMoreButtonBg">#464d6a</color>
+    <color name="hintButtonDarkBg">#549fe3</color>
+    <color name="pageTitleBg">#4bfbfbfb</color>
+    <color name="blogItemTextBg">#23464d6a</color>
+
+    <color name="viewfinder_mask">#B2000000</color>
+    <color name="grayRadiusButtonColor">#e5d3eaff</color>
+
+    <color name="colorCircleYellow">#69f4f014</color>
+    <color name="colorCircleRed">#69f47114</color>
+</resources>

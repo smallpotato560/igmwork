@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/MainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:titleTextColor="@color/textColorPrimary">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imgHeadPhoto"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:onClick="onClick"
+                fresco:actualImageScaleType="centerCrop"
+                fresco:fadeDuration="300"
+                fresco:roundAsCircle="true"
+                fresco:roundingBorderColor="@color/White"
+                fresco:roundingBorderWidth="1dp" />
+
+            <TextView
+                android:id="@+id/lblMainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Title"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20dp" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayoutMain"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            app:tabIndicatorColor="@color/White"
+            app:tabSelectedTextColor="@color/White"
+            app:tabTextColor="@color/textTitleColor" />
+    </FrameLayout>
+
+
+    <com.gc.materialdesign.views.ProgressBarIndeterminate
+        android:id="@+id/progressBarLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLoadingBar"
+        android:visibility="invisible" />
+        />
+</LinearLayout>
