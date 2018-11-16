@@ -6,6 +6,7 @@
     <color name="colorPrimaryDark">#14aef4</color>
     <!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
     <color name="colorAccent">#14aef4</color>
+    <color name="colorWhite">#ffffff</color>
 
     <color name="colorWarnArea">#ff4081</color>
     <!--textColorPrimary 应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->

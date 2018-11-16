@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">igmwork</string>
+    <string name="app_name">QKEE</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -15,7 +15,17 @@
     <string name="prompt_email">帳號</string>
     <string name="prompt_password">密碼</string>
     <string name="action_sign_in">登入</string>
+    <string name="action_login">已有會員</string>
+    <string name="action_checkedAccount">檢查帳號</string>
     <string name="action_register">帳號註冊</string>
     <string name="action_forget_password">忘記密碼?</string>
     <string name="action_sign_in_short">登入</string>
+    <string name="action_sign_email">信箱</string>
+    <string name="action_sign_phone">電話</string>
+    <string name="action_sign_name">名字</string>
+    <string name="action_sign_gender">性別</string>
+    <string name="action_sign_man">男</string>
+    <string name="action_sign_girl">女</string>
+    <string name="action_sign_password">密碼</string>
+    <string name="action_sign_confirmpassword">確認密碼</string>
 </resources>

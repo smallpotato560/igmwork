@@ -28,6 +28,7 @@ import com.apps.igmwork.framework.android.AndroidUtils;
 import com.apps.igmwork.framework.network.NetworkUtils;
 import com.apps.igmwork.framework.server.HTTPParam;
 import com.apps.igmwork.framework.server.HTTPServer;
+import com.apps.igmwork.framework.ui.data.StringParam;
 import com.bcfbaselibrary.net.HTTPRequest;
 import com.bcfbaselibrary.net.volley.VolleyHTTPRequest;
 import com.bcfbaselibrary.net.volley.VolleyHTTPRequestQueue;
@@ -379,6 +380,20 @@ public class BaseActivity extends AppCompatActivity implements Handler.Callback,
         startActivity(intent);
         //overridePendingTransition(R.anim.animzoomin, R.anim.animzoomout);
         //overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+    }
+
+    public void TransferActivityCarryValue(Class<?> cls, StringParam... params)
+    {
+        Intent intent;
+        intent = new Intent(this,cls);
+
+        Bundle bundle = new Bundle();
+        for(int i=0;i<params.length;i++) {
+            bundle.putString(params[i].Name,params[i].Value);
+        }
+        intent.putExtras(bundle);   // 記得put進去，不然資料不會帶過去哦
+
+        startActivity(intent);
     }
 
     public void TransferActivityForResult(Class<?> cls,int requestCode)

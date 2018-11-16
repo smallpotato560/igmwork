@@ -105,6 +105,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 //this.TransferActivity(ResetPasswordActivity.class);
                 break;
             }
+            case R.id.btnRegister:{
+                this.TransferActivity(SignActivity.class);
+                break;
+            }
         }
     }
 

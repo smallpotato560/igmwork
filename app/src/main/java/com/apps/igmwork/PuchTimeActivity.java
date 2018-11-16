@@ -1,7 +1,6 @@
 package com.apps.igmwork;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,10 +40,7 @@ import android.widget.Toast;
 import com.apps.igmwork.common.model.UserProfile;
 import com.apps.igmwork.framework.map.EvilTransform;
 import com.apps.igmwork.framework.map.SphericalUtil;
-import com.apps.igmwork.framework.server.HTTPParam;
-import com.apps.igmwork.framework.server.HTTPServer;
 import com.apps.igmwork.framework.ui.BaseActivity;
-import com.apps.igmwork.framework.ui.data.StringParam;
 import com.apps.igmwork.framework.ui.widget.AlertDialogUtils;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -77,7 +73,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements LocationListener, View.OnClickListener {
+public class PuchTimeActivity extends BaseActivity implements LocationListener, View.OnClickListener {
 
     //静态成员
     private static final int DEFAULT_ZOOM = 16;
@@ -137,9 +133,6 @@ public class MainActivity extends BaseActivity implements LocationListener, View
         if(mUserProfile.UserID == 0)
         {
             TransferActivity(SignActivity.class);
-            //TransferActivityCarryValue(VerCodeActivity.class,
-            //        new StringParam("mobile","0934315020"));
-
             //Intent intent=new Intent();
             //intent.setClass(MainActivity.this,SignActivity.class);
             //startActivity(intent);
@@ -218,17 +211,15 @@ public class MainActivity extends BaseActivity implements LocationListener, View
                     if (scanContent.indexOf("PunchTime") > 0) {
                         btn_scan.setVisibility(View.INVISIBLE);
                         scanContent += "?uid=" + mUserProfile.UserID;
+                    } else {
+                        btn_scan.setVisibility(View.VISIBLE);
                     }
-                    else if (scanContent.indexOf("WorkTime") > 0) {
-                        btn_scan.setVisibility(View.INVISIBLE);
-                        if(scanContent.indexOf("?") > 0) {
-                            scanContent += "&MobileNo=" + mUserProfile.MobileNum;
-                        }
-                        else {
-                            scanContent += "?uid=" + mUserProfile.UserID;
-                        }
-                    }
-                    LoadPage(scanContent);
+                    //LoadPage(scanContent);
+
+                    //在js中调用本地java方法
+                    wvWebBrowser.addJavascriptInterface(new JsInterface(this), "AndroidWebView");
+
+                    wvWebBrowser.loadUrl(scanContent);
                 }
                 else {
                     btn_scan.setVisibility(View.VISIBLE);
@@ -245,39 +236,7 @@ public class MainActivity extends BaseActivity implements LocationListener, View
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode == KeyEvent.KEYCODE_BACK){
-
-            if (keyCode == KeyEvent.KEYCODE_BACK) { // 攔截返回鍵
-                if(btn_scan.getVisibility() == View.VISIBLE)
-                {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("確認視窗")
-                            .setMessage("確定要結束應用程式嗎?")
-                            .setIcon(R.drawable.ic_launcher)
-                            .setPositiveButton("確定",
-                                    new DialogInterface.OnClickListener() {
-
-                                        @Override
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            finish();
-                                        }
-                                    })
-                            .setNegativeButton("取消",
-                                    new DialogInterface.OnClickListener() {
-
-                                        @Override
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            // TODO Auto-generated method stub
-
-                                        }
-                                    }).show();
-                }
-                else {
-                    btn_scan.setVisibility(View.VISIBLE);
-                    wvWebBrowser.setVisibility(View.INVISIBLE);
-                }
-            }
+            onKeycodeBack();
             return true;
         }else{
             return super.onKeyDown(keyCode, event);
@@ -289,7 +248,7 @@ public class MainActivity extends BaseActivity implements LocationListener, View
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_scan: {
-                new IntentIntegrator(MainActivity.this).initiateScan();
+                new IntentIntegrator(PuchTimeActivity.this).initiateScan();
                 break;
             }
             case  R.id.btn_reset: {
@@ -393,7 +352,7 @@ public class MainActivity extends BaseActivity implements LocationListener, View
 
                                         if (Distance < 300) {
                                             btn_reset.setVisibility(View.INVISIBLE);
-                                            new IntentIntegrator(MainActivity.this).initiateScan();
+                                            new IntentIntegrator(PuchTimeActivity.this).initiateScan();
                                         } else {
                                             btn_reset.setVisibility(View.VISIBLE);
                                             Toast.makeText(getApplicationContext(), Distance + " ,你的定位並沒有在打卡範圍內，請重新定位後按Reset。", Toast.LENGTH_LONG).show();
@@ -527,12 +486,6 @@ public class MainActivity extends BaseActivity implements LocationListener, View
 
 
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return super.shouldOverrideUrlLoading(view, url);
-            }
-
-            @Override
             public void onPageFinished(WebView view, String url) {
                 // TODO Auto-generated method stub
                 super.onPageFinished(view, url);
@@ -552,7 +505,7 @@ public class MainActivity extends BaseActivity implements LocationListener, View
                                             public boolean onJsAlert(WebView view, String url, final String message, JsResult result) {
                                                 String showMessage=message.replace("[CloseWindow]","").replace("[MemberUpgrade]","");
 
-                                                AlertDialogUtils.ShowMessageDialog(MainActivity.this, showMessage,
+                                                AlertDialogUtils.ShowMessageDialog(PuchTimeActivity.this, showMessage,
                                                         new DialogInterface.OnClickListener() {
                                                             @Override
                                                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -589,31 +542,11 @@ public class MainActivity extends BaseActivity implements LocationListener, View
         @JavascriptInterface
         public void showInfoFromJs(String msg) {
             Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-            new IntentIntegrator(MainActivity.this).initiateScan();
+            new IntentIntegrator(PuchTimeActivity.this).initiateScan();
             wvWebBrowser.setVisibility(View.INVISIBLE);
             //Intent intent=new Intent(WebPayActivity.this,MainActivity.class);
             //intent.putExtra("Position",3);
             //TransferActivityForResult(intent,1);
-        }
-
-        @JavascriptInterface
-        public void showInfoFromJs(String url, int mid, int vid) {
-            url += "?mid="+mid+"&vid="+vid+"&name="+mUserProfile.NickName+"&mobileNo="+mUserProfile.MobileNum+"&email="+mUserProfile.Email+
-                    "&gender="+mUserProfile.Gender;
-
-            LoadPage(url);
-        }
-
-        //加入會員成功
-        @JavascriptInterface
-        public void showInfoFromJs(String msg, int id) {
-            Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-
-            mUserProfile= UserProfile.Load(MainActivity.this);
-
-
-
-            mUserProfile.Save(MainActivity.this);
         }
     }
     public void sendInfoToJs(View view) {
@@ -622,3 +555,4 @@ public class MainActivity extends BaseActivity implements LocationListener, View
         wvWebBrowser.loadUrl("javascript:showInfoFromJava('" + msg + "')");
     }
 }
+
