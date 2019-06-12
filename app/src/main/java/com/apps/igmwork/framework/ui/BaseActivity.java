@@ -69,6 +69,7 @@ public class BaseActivity extends AppCompatActivity implements Handler.Callback,
     //Data members
     //protected APPConfig mPhoneConfig;
     protected UserProfile mUserProfile=null;
+    protected BaseActivity mBaseActivity;
 
     protected AndroidUtils mAndroidUtils;
     public Handler UIHandler;
@@ -273,6 +274,29 @@ public class BaseActivity extends AppCompatActivity implements Handler.Callback,
         }
     }
 
+    protected  void UIInit(boolean showBackButton)
+    {
+        InitToolbar("");
+        InitButtonClickEvent(getWindow().getDecorView());
+
+        progressBarLoading=findViewById(R.id.progressBarLoading);
+        /*
+        if(progressBarLoading.getVisibility()==View.GONE&&findViewById(R.id.progressBarLoadingCustom)!=null)
+        {
+            progressBarLoading=findViewById(R.id.progressBarLoadingCustom);
+        }
+*/
+        if(showBackButton) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            mMainToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();;
+                }
+            });
+        }
+    }
     public void SetLoadingBarVisible(boolean show)
     {
         bShowLoadingBar=show;
@@ -363,6 +387,16 @@ public class BaseActivity extends AppCompatActivity implements Handler.Callback,
         }
     }
 
+    public void TransferActivityNoBack(Class<?> cls)
+    {
+        Intent intent;
+        intent = new Intent(this,cls);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+        //overridePendingTransition(R.anim.animzoomin, R.anim.animzoomout);
+        //overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+    }
     public void TransferActivity(Class<?> cls)
     {
         Intent intent;
@@ -572,6 +606,25 @@ public class BaseActivity extends AppCompatActivity implements Handler.Callback,
 
     }
 
+    public String MergeString (String url, StringParam... params) {
+        try {
+            for(int i=0; i<params.length; i++) {
+                if(url.indexOf("?") > 0) {
+                    url += "&";
+                }
+                else {
+                    url += "?";
+                }
+
+                url += params[i].Name + "=" + URLEncoder.encode(params[i].Value.toString(),"utf-8");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return url;
+    }
     //定义外部类别
     public interface OnListDataListener
     {

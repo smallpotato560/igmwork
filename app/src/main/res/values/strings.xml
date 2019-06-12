@@ -14,7 +14,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">帳號</string>
     <string name="prompt_password">密碼</string>
-    <string name="action_sign_in">登入</string>
+    <string name="action_sign_in">註冊</string>
+    <string name="action_scan">掃描</string>
     <string name="action_login">已有會員</string>
     <string name="action_checkedAccount">檢查帳號</string>
     <string name="action_register">帳號註冊</string>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/MainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@color/textColorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/OverflowMenuStyle"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="-70dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:srcCompat="@drawable/ic_title" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <com.gc.materialdesign.views.ProgressBarIndeterminate
+        android:id="@+id/progressBarLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLoadingBar"
+        android:visibility="invisible" />
+
+
+</LinearLayout>

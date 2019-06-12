@@ -39,6 +39,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.igmwork.common.model.UserProfile;
+import com.apps.igmwork.fragment.BinnerListFragment;
+import com.apps.igmwork.fragment.DataListFragment;
+import com.apps.igmwork.fragment.MemberFragment;
+import com.apps.igmwork.fragment.ScanFragment;
 import com.apps.igmwork.framework.map.EvilTransform;
 import com.apps.igmwork.framework.map.SphericalUtil;
 import com.apps.igmwork.framework.server.HTTPParam;
@@ -321,6 +325,36 @@ public class MainActivity extends BaseActivity implements LocationListener, View
     }
 
     //实现后台数据事件
+
+    private ArrayList<Fragment> LoadFragments() {
+        FragmentManager objFragmentManager = getSupportFragmentManager();
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        Fragment objFragment=objFragmentManager.findFragmentByTag(ScanFragment.class.getName());
+
+        if(objFragment==null)
+            objFragment= ScanFragment.newInstance();
+        fragments.add(objFragment);
+
+        objFragment=objFragmentManager.findFragmentByTag(DataListFragment.class.getName());
+
+        if(objFragment==null)
+            objFragment=DataListFragment.newInstance();
+        fragments.add(objFragment);
+
+        objFragment=objFragmentManager.findFragmentByTag(BinnerListFragment.class.getName());
+        if(objFragment==null)
+            objFragment=BinnerListFragment.newInstance();
+        fragments.add(objFragment);
+
+        objFragment=objFragmentManager.findFragmentByTag(MemberFragment.class.getName());
+        if(objFragment==null)
+            objFragment=MemberFragment.newInstance();
+        fragments.add(objFragment);
+
+
+        return fragments;
+
+    }
     @Override
     public void OnReceiveHTTPResp(Object key, Object contextObject, JSONObject jsonServerResponse) {
         //Logger.E(TAG,"Key:"+key+",Response:"+jsonServerResponse.toString());

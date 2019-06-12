@@ -18,16 +18,14 @@ public class HTTPServer {
     final public static String NewVerionAPPURL=ServerAddress+"/APK/EChat_v";
 
 
-    final public static String FoxGameListURL=ServerAddress+"Service/FoxGameList.aspx";
-    final public static String UserAccountAddURL=ServerAddress+"Service/UserAccountAdd.aspx";
-    final public static String WebPayURL="http://97.74.238.39/WebPay/WebPayForm.aspx";
-    final public static String AddCustomerInfoURL="http://97.74.238.39/WorkTime/AddCustomerInfo.aspx";
+    final public static String AddCustomerInfoURL=ServerAddress + "/AddCustomerInfo.aspx";
     final public static String PuchVerCodeURL=ServerAddress +"PushVerCode.aspx";
     final public static String CheckedVerCodeURL=ServerAddress +"CheckedVerCode.aspx";
     final public static String CheckedAccountURL=ServerAddress +"CheckedAccount.aspx";
-    final public static String MemberUpgradeURL="http://97.74.238.39/WebPay/MemberUpgrade.aspx";
-    final public static String ReturnUrl="http://97.74.238.39/WebPay/APPPaymentResult.aspx";
-    public static String LastLBS="";
+    final public static String GetUserDataListURL=ServerAddress +"GetUserDataList.aspx";
+    final public static String GetUserDataDetailURL=ServerAddress +"GetUserDataDetail.aspx";
+    final public static String PrivacyURL=ServerAddress +"Privacy.aspx";
+    final public static String ActivityURL=ServerAddress +"Activity.aspx";
 
 
 

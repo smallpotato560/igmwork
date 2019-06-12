@@ -9,8 +9,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".LocationActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".TestActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".MainFirstActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,21 +52,41 @@
 
                 <data
                     android:scheme="http"
-                    android:host="97.74.238.39"
+                    android:host="www.qkee.com.tw"
                     android:pathPrefix="/recipe" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WebActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MyCollectionActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".LoginActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".SignActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".VerCodeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".CustomCaptureActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".PuchTimeActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tool:replace="screenOrientation" />
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

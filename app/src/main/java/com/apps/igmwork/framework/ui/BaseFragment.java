@@ -9,6 +9,7 @@ import android.view.View;
 import com.apps.igmwork.common.model.UserProfile;
 import com.apps.igmwork.framework.server.HTTPParam;
 import com.apps.igmwork.framework.server.HTTPServer;
+import com.apps.igmwork.framework.ui.data.StringParam;
 import com.bcfbaselibrary.net.HTTPRequest;
 import com.bcfbaselibrary.net.volley.VolleyHTTPRequest;
 
@@ -50,6 +51,11 @@ public class BaseFragment extends Fragment implements VolleyHTTPRequest.OnHTTPRe
         mBaseActivity.OnPostHTTPRequest(key,contextObject);
     }
 
+    public void AddHTTPRequest(View startView,final Object key,HTTPParam... params)
+    {
+        AddHTTPRequest(startView, key,null, params);
+    }
+
     @Override
     public void OnHandleError(Object key, Object contextObject, HTTPRequest.HTTPErrorType errorType, Exception e) {
         mBaseActivity.OnHandleError(key,contextObject,errorType,e);
@@ -79,5 +85,25 @@ public class BaseFragment extends Fragment implements VolleyHTTPRequest.OnHTTPRe
         {
             e.printStackTrace();
         }
+    }
+
+    public String MergeString (String url, StringParam... params) {
+        try {
+            for(int i=0; i<params.length; i++) {
+                if(url.indexOf("?") > 0) {
+                    url += "&";
+                }
+                else {
+                    url += "?";
+                }
+
+                url += params[i].Name + "=" + URLEncoder.encode(params[i].Value.toString(),"utf-8");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return url;
     }
 }

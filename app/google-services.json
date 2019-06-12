@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "508462982043",
+    "firebase_url": "https://qkee-mkmk.firebaseio.com",
+    "project_id": "qkee-mkmk",
+    "storage_bucket": "qkee-mkmk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508462982043:android:567769a5828a7ad2",
+        "android_client_info": {
+          "package_name": "com.apps.igmwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508462982043-8h3p700npu2ri1nm31g1pure6tbbv8as.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.igmwork",
+            "certificate_hash": "402987fe5c07f26c4c3d3e366230c6c8e041cd8f"
+          }
+        },
+        {
+          "client_id": "508462982043-q500q02qhk6580amr4j3lc9mjc07v44i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnYfM2wmch55AwBhfcWfT3f_mEIzghdUw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508462982043-q500q02qhk6580amr4j3lc9mjc07v44i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

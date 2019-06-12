@@ -25,8 +25,12 @@ public class UserProfile {
     public String FacebookID="";
     public String InstagramID="";
     public String Address="";
+    public String LocationAddress="";
     public int Gender=-1;
+    public int LocationAddresResult = 0;
 
+    public String Title="";
+    public String LoadURL = "";
     public int Role=0;
     public String DeviceID="";
     public String LastMessageTime="";
@@ -44,6 +48,10 @@ public class UserProfile {
             mUserProfile=new UserProfile();
 
             mUserProfile.DeviceID= LocalDataAdapter.GetString(context, "UserProfile.DeviceID");
+            mUserProfile.Title = LocalDataAdapter.GetString(context,"UserProfile.Title");
+            mUserProfile.LoadURL = LocalDataAdapter.GetString(context,"UserProfile.LoadURL");
+            mUserProfile.LocationAddress = LocalDataAdapter.GetString(context,"UserProfile.LocationAddress");
+            mUserProfile.LocationAddresResult = LocalDataAdapter.GetInt(context,"UserProfile.LocationAddresResult", 0);
 
             if(!TextUtils.isEmpty(mUserProfile.DeviceID))
             {
@@ -52,6 +60,7 @@ public class UserProfile {
                 mUserProfile.NickName=LocalDataAdapter.GetString(context, "UserProfile.NickName");
                 mUserProfile.UserName=LocalDataAdapter.GetString(context, "UserProfile.UserName");
                 mUserProfile.MobileNum=LocalDataAdapter.GetString(context, "UserProfile.MobileNum");
+                mUserProfile.Email=LocalDataAdapter.GetString(context, "UserProfile.Email");
                 mUserProfile.Gender=LocalDataAdapter.GetInt(context, "UserProfile.Gender", -1);
                 mUserProfile.LastMessageTime=LocalDataAdapter.GetString(context, "UserProfile.LastMessageTime");
                 mUserProfile.Role=LocalDataAdapter.GetInt(context, "UserProfile.Role", 0);
@@ -100,6 +109,11 @@ public class UserProfile {
 
         LocalDataAdapter.SetParameterToBuffer("UserProfile.LastVersionCode", objUserProfile.LastVersionCode);
         LocalDataAdapter.SetParameterToBuffer("UserProfile.Role", objUserProfile.Role);
+
+        LocalDataAdapter.SetParameterToBuffer("UserProfile.Title", objUserProfile.Title);
+        LocalDataAdapter.SetParameterToBuffer("UserProfile.LoadURL", objUserProfile.LoadURL);
+        LocalDataAdapter.SetParameterToBuffer("UserProfile.LocationAddress", objUserProfile.LocationAddress);
+        LocalDataAdapter.SetParameterToBuffer("UserProfile.LocationAddresResult", objUserProfile.LocationAddresResult);
 
         LocalDataAdapter.CommitChanges(context);
 

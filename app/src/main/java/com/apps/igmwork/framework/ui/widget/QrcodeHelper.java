@@ -1,4 +1,4 @@
-package com.apps.igmwork.framework.ui.image;
+package com.apps.igmwork.framework.ui.widget;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

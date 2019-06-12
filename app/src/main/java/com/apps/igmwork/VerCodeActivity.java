@@ -63,7 +63,7 @@ public class VerCodeActivity  extends BaseActivity implements View.OnClickListen
     protected Button btn_register;
 
     //数据成员
-    private int countSeconds = 10;  //倒計時秒數
+    private int countSeconds = 60;  //倒計時秒數
     private Context mContext;
     private int gender;
     private boolean mReadSMSPermissionGranted;
@@ -236,22 +236,26 @@ public class VerCodeActivity  extends BaseActivity implements View.OnClickListen
                         PhoneService objPhoneService=new PhoneService(this);
                         ContentValues cvUserProfile=objAccountData.get(0);
 
-                        mUserProfile.DeviceID= objPhoneService.GetDeviceTaken();
-                        mUserProfile.UserID=cvUserProfile.getAsInteger("UserID");
-                        mUserProfile.UserName=cvUserProfile.getAsString("UserName");
-                        mUserProfile.MobileNum=cvUserProfile.getAsString("MobileNum");
-                        mUserProfile.Gender=cvUserProfile.getAsInteger("Gender");
-
+                        mUserProfile.DeviceID = objPhoneService.GetDeviceTaken();
+                        mUserProfile.UserID = cvUserProfile.getAsInteger("UserID");
+                        mUserProfile.UserName = cvUserProfile.getAsString("UserName");
+                        mUserProfile.NickName = cvUserProfile.getAsString("NickName");
+                        mUserProfile.Email = cvUserProfile.getAsString("Email");
+                        mUserProfile.MobileNum = cvUserProfile.getAsString("MobileNum");
+                        mUserProfile.Gender = cvUserProfile.getAsInteger("Gender");
                         mUserProfile.Save(this);
                     }
 
                 }
-                TransferActivity(MainActivity.class);
+                TransferActivity(MainFirstActivity.class);
             }
             else
             {
                 if (jsonServerResponse.optInt("OverTime") == 1) {
                     Toast.makeText(getApplicationContext(), "您的驗證碼已過期，請重新獲取驗證碼", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "您的驗證碼錯誤。", Toast.LENGTH_LONG).show();
                 }
             }
         }

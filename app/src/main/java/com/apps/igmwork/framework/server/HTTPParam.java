@@ -5,6 +5,8 @@ package com.apps.igmwork.framework.server;
  */
 
 public class HTTPParam {
+    public String Name="";
+    public Object Value=null;
     public HTTPParam()
     {}
     public HTTPParam(final String name,final Object value)
@@ -13,6 +15,4 @@ public class HTTPParam {
         Value=value;
     }
 
-    public String Name="";
-    public Object Value=null;
 }

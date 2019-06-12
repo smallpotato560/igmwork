@@ -25,11 +25,30 @@
         <item name="android:textColor">@color/White</item>
     </style>
 
+    <style name="ButtonCircleScan">
+        <item name="android:textSize">17sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/selector_button_scan</item>
+    </style>
+
     <style name="ButtonCircle">
         <item name="android:textSize">17sp</item>
         <item name="android:height">40dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:background">@drawable/selector_button</item>
+    </style>
+
+    <style name="VercodeButtonCircle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/selector_button_vercode</item>
+    </style>
+    <style name="style_titlebar_normal" parent="Theme.AppCompat.Light">
+
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_white</item> <!--返回icon-->
 
     </style>
+
 </resources>

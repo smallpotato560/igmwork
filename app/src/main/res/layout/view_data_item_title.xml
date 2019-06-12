@@ -1,0 +1,40 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/shape_rectangle_gray"
+    android:padding="5dp">
+
+    <View
+        android:id="@+id/eton_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/lblTitle_Time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/eton_placeholder"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="時間"
+        android:textSize="25dp"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:id="@+id/eton_pedometer_entry_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/eton_placeholder"
+        android:gravity="center"
+        android:text="名稱"
+        android:textColor="@color/textColor"
+        android:textSize="25dp" />
+
+
+</RelativeLayout>

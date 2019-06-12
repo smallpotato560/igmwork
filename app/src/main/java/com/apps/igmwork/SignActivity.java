@@ -3,6 +3,7 @@ package com.apps.igmwork;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,6 +22,7 @@ import com.apps.igmwork.framework.ui.data.StringParam;
 import com.bcfbaselibrary.internal.Logger;
 import com.bcfbaselibrary.io.PhoneService;
 import com.bcfbaselibrary.string.JsonHelper;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +36,7 @@ import butterknife.BindView;
 
 import static com.apps.igmwork.framework.ui.widget.AlertDialogUtils.ShowMessageDialog;
 
-public class SignActivity extends BaseActivity implements View.OnClickListener {
+    public class SignActivity extends BaseActivity implements View.OnClickListener {
 
     //静态成员
     private int gender;
@@ -219,13 +221,16 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                 //AndroidUtils.HideInput(this,txtPassword);
                 //AndroidUtils.HideInput(this,txtConfirmPassword);
                 AndroidUtils.HideInput(this,txtEmail);
+                String DeviceToken = FirebaseInstanceId.getInstance().getToken();
+                //Logger.E("Mytoken", "refresh token:" + DeviceToken);
 
 
                 String url = HTTPServer.BuildURL(this, HTTPServer.AddCustomerInfoURL,
                         new HTTPParam("account",txtAccount.getText().toString()),
                         new HTTPParam("name",txtNickName.getText().toString()),
                         new HTTPParam("email",txtEmail.getText().toString()),
-                        new HTTPParam("gender",gender));
+                        new HTTPParam("gender",gender),
+                        new HTTPParam("DeviceToken",DeviceToken));
 
 
                 AddHTTPRequest("SignCustomer", null, url);
@@ -272,6 +277,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                         mUserProfile.DeviceID= objPhoneService.GetDeviceTaken();
                         mUserProfile.UserID=cvUserProfile.getAsInteger("UserID");
                         mUserProfile.UserName=cvUserProfile.getAsString("UserName");
+                        mUserProfile.NickName=cvUserProfile.getAsString("NickName");
                         mUserProfile.MobileNum=cvUserProfile.getAsString("MobileNum");
                         mUserProfile.Gender=cvUserProfile.getAsInteger("Gender");
 
